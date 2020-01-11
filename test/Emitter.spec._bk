@@ -1,0 +1,10 @@
+import { shallowMount } from "@vue/test-utils";
+import Emitter from "@/components/test/Emitter.vue";
+
+describe('Emitter.vue', () => {
+  it('emitイベントが発生する', () => {
+    const wrapper = shallowMount(Emitter);
+    wrapper.vm.emitEvent();
+    expect(wrapper.emitted().myEvent[0]).toEqual(["name", "password"]);
+  })
+})
