@@ -7,12 +7,12 @@ const localVue = createLocalVue();
 localVue.use(ElementUI);
 
 describe('Dialog.vue', () => {
-  it('ダイアログを起動し、保存ボタンがあること', () => {
+  it('ダイアログを起動し、保存ボタンがあること', async () => {
     const wrapper = mount(Dialog, {
       localVue,
     });
     wrapper.setData({ visible: true });
-    wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
 
     //ダイアログがbodyに追加されるのでbodyからDOMを取得　
     const elDialog = document.getElementsByClassName('el-dialog__wrapper')[0];
