@@ -14,7 +14,7 @@ describe('Dialog.vue', () => {
     wrapper.setData({ visible: true });
     await wrapper.vm.$nextTick();
 
-    //ダイアログがbodyに追加されるのでbodyからDOMを取得　
+    // ダイアログがbodyに追加されるのでbodyからDOMを取得　
     const elDialog = document.getElementsByClassName('el-dialog__wrapper')[0];
     const buttons = elDialog.getElementsByClassName('el-button');
 
@@ -23,11 +23,11 @@ describe('Dialog.vue', () => {
 
     for (let i = 0; i < len; i++) {
       const button = buttons[i];
-      if (button && button.textContent === "保存") {
+      if (button && button.textContent === '保存') {
         saveButton = button;
       }
     }
 
     expect(saveButton).toBeTruthy;
-  })
-})
+  });
+});

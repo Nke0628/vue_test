@@ -6,13 +6,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
+import KbnLoginForm from "./components/molecules/KbnLoginForm.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    HelloWorld,
+    KbnLoginForm
+  },
+  mounted: () => {
+    window.onfocus = () => {
+      const onFocutElm = window.document.activeElement;
+      if (onFocutElm.classList.contains("el-tooltip")) {
+        (onFocutElm as HTMLElement).blur();
+      }
+    };
   }
 };
 </script>
