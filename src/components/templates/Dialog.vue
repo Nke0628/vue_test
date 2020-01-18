@@ -1,11 +1,7 @@
 <template>
   <div>
-    <ElTooltip
-      effect="dark"
-      content="Top Left prompts info"
-      placement="top-start"
-    >
-      <ElButton @click="visible = !visible">??</ElButton>
+    <ElTooltip effect="dark" content="Top Left prompts info" placement="top-start">
+      <ElButton @click="handleClick">??</ElButton>
     </ElTooltip>
     <ElDialog append-to-body :visible.sync="visible">
       <template v-slot:footer>
@@ -16,10 +12,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Emit, PropSync, Vue } from 'vue-property-decorator';
+import { Component, Prop, Emit, PropSync, Vue } from "vue-property-decorator";
 
 @Component
 export default class Dialog extends Vue {
   visible = false;
+
+  mounted() {
+    //console.log("子供コンポーネント");
+  }
+
+  handleClick() {
+    //console.log(document.activeElement);
+    this.visible = !this.visible;
+    const onFOcus = document.getElementsByClassName("el-tooltip");
+    (onFOcus.item(0) as HTMLElement).focus();
+  }
 }
 </script>

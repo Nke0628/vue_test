@@ -17,12 +17,14 @@ export default {
     KbnLoginForm
   },
   mounted: () => {
-    window.onfocus = () => {
+    window.addEventListener("blur", function(e) {
       const onFocutElm = window.document.activeElement;
-      if (onFocutElm.classList.contains("el-tooltip")) {
+      console.log(e);
+      if (onFocutElm!.classList.contains("el-tooltip")) {
         (onFocutElm as HTMLElement).blur();
+        console.log(document.activeElement);
       }
-    };
+    });
   }
 };
 </script>
