@@ -1,35 +1,43 @@
 <template>
   <div id="app">
     <div>
+      <router-link to="/dialog">dialog</router-link>
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { Component, Prop, Emit, PropSync, Vue } from "vue-property-decorator";
 import HelloWorld from "./components/HelloWorld.vue";
 import KbnLoginForm from "./components/molecules/KbnLoginForm.vue";
 
-export default {
-  name: "app",
+@Component({
   components: {
     HelloWorld,
     KbnLoginForm
-  },
-  mounted: () => {
-    window.addEventListener("blur", function(e) {
+  }
+})
+export default class App extends Vue {
+  mounted() {
+    window.addEventListener("focus", () => {
       const onFocutElm = window.document.activeElement;
-      console.log(e);
-      if (onFocutElm!.classList.contains("el-tooltip")) {
-        (onFocutElm as HTMLElement).blur();
-        console.log(document.activeElement);
+      if (onFocutElm && onFocutElm.classList.contains("el-tooltip")) {
+        const body = document.body;
+        body.tabIndex = 0;
+        body.focus();
       }
     });
   }
-};
+}
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,13 +1,18 @@
 <template>
   <div>
-    <ElTooltip effect="dark" content="Top Left prompts info" placement="top-start">
+    <ElTooltip
+      effect="dark"
+      content="Top Left prompts info"
+      placement="top-start"
+      :enterable="false"
+    >
       <ElButton @click="handleClick">??</ElButton>
     </ElTooltip>
-    <ElDialog append-to-body :visible.sync="visible">
+    <ElDialog append-to-body :visible.sync="visible" :close-on-click-modal="false">
       <template v-slot:footer>
         <ElButton>??</ElButton>
       </template>
-    </ElDialog>
+    </ElDialog>-->
   </div>
 </template>
 
